@@ -34,3 +34,9 @@ footer {
     padding: 1rem;
     color: #fff;
 }
+
+.jumbotron { 
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 1rem;
+}

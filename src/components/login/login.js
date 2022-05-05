@@ -9,7 +9,7 @@ export const LoginForm = ({handleOnchange, username, password, handleOnSubmit, f
             <Col>
                 <h1>Admin Login</h1>
                 <hr />
-                <Form autoComplete='off'>
+                <Form autoComplete='off' onSubmit={handleOnSubmit}>
                     <Form.Group>
                         <Form.Label>User Name</Form.Label>
                         <Form.Control
