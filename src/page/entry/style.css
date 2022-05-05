@@ -1,0 +1,16 @@
+.entry-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.jumbotron { 
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+
+.form-box {
+    box-shadow: 0px 0px 15px -5px black;
+}
