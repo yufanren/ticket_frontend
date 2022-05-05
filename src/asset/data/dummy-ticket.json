@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 2,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 3,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 4,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 5,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 6,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 7,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    },
+    {
+        "id": 8,
+        "subject": "platform abuse",
+        "status": "Client response pending",
+        "addedAt": "2022-12-01" 
+    }
+]

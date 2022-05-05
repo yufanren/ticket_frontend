@@ -5,10 +5,10 @@ import {Header} from './Header'
 export const DefaultLayout = ({children}) => {
   return (
     <div className='default-layout'>
-      <div className='header'>
+      <header className='header'>
         <Header />   
-      </div>
-      <main className='main'>
+      </header>
+      <main className='main mt-5'>
         {children}
       </main>
       <footer className='footer'>
