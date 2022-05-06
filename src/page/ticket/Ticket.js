@@ -4,23 +4,33 @@ import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import { Message } from '../../components/message/Message'
 import { UpdateTicket } from '../../components/update-ticket/UpdateTicket'
 import tickets from '../../asset/data/dummy-ticket.json'
+import { useParams} from 'react-router-dom'
 
-const ticket = tickets[0]
+// const ticket = tickets[0]
 export const Ticket = () => {
+    
+    const {tid} = useParams()
     const [msg, setMsg] = useState('')
+    const [ticket, setTicket] = useState('')
 
     const handleOnChange = e => {
         setMsg(e.target.value)
     }
 
     useEffect(() => {
-    }, [msg])
+        for (let i = 0; i < tickets.length; i++) {
+            if (tickets[i].id == tid) {
+                setTicket(tickets[i])
+                break
+            }
+        }
+    }, [msg, tid])
 
     const handleOnSubmit = () => {
-
     }
     
   return (
+      ticket &&
     <Container>
         <Row>
             <Col>
@@ -40,7 +50,9 @@ export const Ticket = () => {
         </Row>
         <Row className='mt-4'>
             <Col>
+                {ticket.detail &&
                 <Message message={ticket.detail}/>
+                }
             </Col>
         </Row>
         <hr />

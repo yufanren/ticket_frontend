@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import { SearchForm } from '../../components/search-form/SearchForm'
 import { TicketTable } from '../../components/ticket-table/TicketTable'
@@ -32,7 +33,9 @@ export const TicketListing = () => {
         </Row>
         <Row className='mt-4'>
             <Col>
+                <Link to='/add-ticket'>
                 <Button variant='info'>Add New Ticket</Button>
+                </Link>
             </Col>
             <Col className='text-right'>
                 <SearchForm

@@ -1,21 +1,20 @@
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {Entry} from './page/entry/Entry'
 import { DefaultLayout } from './layout/DefaultLayout';
-import { Dashboard } from './page/dashboard/Dashboard';
-import { NewTicket } from './page/new-ticket/NewTicket';
-import { TicketListing } from './page/ticket-listing/TicketListing';
-import { Ticket } from './page/ticket/Ticket';
+
+
 
 function App() {
   return (
     <div className="App">
-      {/* <Entry /> */}
-      <DefaultLayout>
-        {/* <Dashboard /> */}
-        {/* <NewTicket /> */}
-        {/* <TicketListing /> */}
-        <Ticket />
-      </DefaultLayout>
+      <Router>
+      <Routes>
+        <Route exact path='/' element={<Entry />} />
+        <Route path='/*' element={<DefaultLayout />}>
+        </Route>
+      </Routes> 
+      </Router>
     </div>
   );
 }
