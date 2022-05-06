@@ -3,48 +3,68 @@
         "id": 1,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
+        "detail": [
+            {
+                "date": "22-10-10",
+                "message": "fohoighiaghbhdagb",
+                "messageBy": "client" 
+            },
+            {
+                "date": "22-10-11",
+                "message": "ffsf",
+                "messageBy": "operator" 
+            }
+        ],
         "addedAt": "2022-12-01" 
     },
     {
         "id": 2,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     },
     {
         "id": 3,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     },
     {
         "id": 4,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     },
     {
         "id": 5,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     },
     {
         "id": 6,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     },
     {
         "id": 7,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     },
     {
         "id": 8,
         "subject": "platform abuse",
         "status": "Client response pending",
+        "email": "user1@abc.com",
         "addedAt": "2022-12-01" 
     }
 ]
