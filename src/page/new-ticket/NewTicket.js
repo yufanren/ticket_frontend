@@ -44,7 +44,6 @@ export const NewTicket = () => {
         <Row>
             <Col>
                 <BreadCrumb page='New Ticket' />
-
             </Col>
         </Row>
         <Row>
