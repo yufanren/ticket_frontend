@@ -1,14 +1,66 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import {Container, Row, Col, Form, Button} from 'react-bootstrap'
+import {Container, Row, Col, Form, Button, Spinner, Alert} from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-export const LoginForm = ({handleOnchange, username, password, handleOnSubmit, formSwitcher}) => {
-  return (
+import {loginPending, loginFail, loginSuccess} from './loginSlice'
+import {userLogin} from '../../api/userAPI'
+export const LoginForm = ({formSwitcher}) => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const {isLoading, error, isAuth} = useSelector(state => state.login)
+
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
+  
+  
+    const handleOnchange = e => {
+      const {name, value} = e.target
+      switch (name) {
+        case 'username':
+          setUsername(value)
+          break
+        case 'password':
+          setPassword(value)
+          break
+        case 'email':
+          setEmail(value)
+          break
+        default:
+          break
+      }
+    }
+  
+    const handleOnSubmit = async e => {
+      e.preventDefault();
+      if ((!username || !password) && !email) {
+        return alert("Please fill all required information!")
+      }
+      dispatch(loginPending())
+
+      try {
+          const isAuth = await userLogin({'name': username, password})
+
+          if (isAuth.status === 'error') {
+              return dispatch(loginFail(isAuth.message))
+          }
+          dispatch(loginSuccess())
+          navigate('/dashboard')
+      } catch (error) {
+          dispatch(loginFail(error.message))
+      }
+    }
+
+    return (
     <Container>
         <Row>
             <Col>
                 <h1>Admin Login</h1>
                 <hr />
+                {error && <Alert variant='danger'>{error}</Alert>}
                 <Form autoComplete='off' onSubmit={handleOnSubmit}>
                     <Form.Group>
                         <Form.Label>User Name</Form.Label>
@@ -35,6 +87,7 @@ export const LoginForm = ({handleOnchange, username, password, handleOnSubmit, f
                     </Form.Group>
                     <br></br>
                     <Button type='submit' onClick={handleOnSubmit}>Login</Button>
+                    {isLoading && <Spinner variant='primary' animation='border' />}
                 </Form>
                 <hr />
             </Col>
@@ -49,9 +102,5 @@ export const LoginForm = ({handleOnchange, username, password, handleOnSubmit, f
 }
 
 LoginForm.propTypes = {
-    handleOnchange: PropTypes.func.isRequired,
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    handleOnSubmit: PropTypes.func.isRequired,
     formSwitcher: PropTypes.func.isRequired
 }
