@@ -3,12 +3,15 @@ import {Nav, Navbar} from 'react-bootstrap'
 import logo from '../asset/img/logo.png'
 import { useNavigate } from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
+import {userLogout} from '../api/userAPI'
 
 export const Header = () => {
   const navigate = useNavigate()
 
   const logMeOut = () => {
+    userLogout()
     sessionStorage.removeItem('accessJWT')
+    localStorage.removeItem('crmSite')
     navigate('/')
   }
 

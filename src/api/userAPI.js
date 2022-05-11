@@ -4,6 +4,7 @@ const rootURL = 'http://localhost:3001/v1/'
 const loginURL = rootURL + 'user/login'
 const userProfileURL = rootURL + 'user'
 const logoutURL = rootURL + 'user/logout'
+const newAccessJWT = rootURL + 'tokens'
 export const userLogin = formData => {
     return new Promise(async(resolve, reject) => {
 
@@ -63,4 +64,31 @@ export const userLogout = async () => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const fetchNewAccessJWT = () => {
+    return new Promise(async(resolve, reject) => {
+
+        try {
+            const {refreshJWT} = JSON.parse(localStorage.getItem('crmSite'))
+
+            if (!refreshJWT) {
+                reject("Token not found")
+            }
+            const res = await axios.get(newAccessJWT, {
+                headers: {
+                    Authorization: 'refreshJWT'
+                }
+            })
+            if (res.data.status === 'success') {
+                sessionStorage.setItem('accessJWT', res.data.accessJWT)
+            }
+            resolve(true)
+        } catch (error) {
+            if (error.message === 'Request failed with status code 403') {
+                localStorage.removeItem('crmSite')
+            }
+            reject(false)
+        }
+    })
 }

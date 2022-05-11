@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {Container, Row, Col, Form, Button, Spinner, Alert} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,10 +11,14 @@ export const LoginForm = ({formSwitcher}) => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {isLoading, error, isAuth} = useSelector(state => state.login)
+    const {isLoading, error} = useSelector(state => state.login)
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    useEffect(() => {
+      (sessionStorage.getItem('accessJWT')) && navigate('/dashboard')
+    }, [navigate])
+
+    const [username, setUsername] = useState("user1")
+    const [password, setPassword] = useState("password")
     const [email, setEmail] = useState("")
   
   
