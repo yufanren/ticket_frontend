@@ -7,9 +7,10 @@ import {LinkContainer} from 'react-router-bootstrap'
 export const Header = () => {
   const navigate = useNavigate()
 
-  const logMeOut = () => [
+  const logMeOut = () => {
+    sessionStorage.removeItem('accessJWT')
     navigate('/')
-  ]
+  }
 
   return (
     <Navbar collapseOnSelect bg='info' 
