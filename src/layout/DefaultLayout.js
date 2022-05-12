@@ -26,7 +26,10 @@ export const DefaultLayout = () => {
       }
     }
 
-  }, [isAuth])
+    !sessionStorage.getItem('accessJWT') && localStorage.getItem('crmSite') && updateAccessJWT()
+
+    !isAuth && sessionStorage.getItem('accessJWT') && dispatch(loginSuccess())
+  }, [isAuth, dispatch])
 
   return (
     isAuth ? 
