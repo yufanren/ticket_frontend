@@ -1,6 +1,7 @@
 import { openNewTicketPending, openNewTicketFail, openNewTicketSuccess} from './addTicketSlice'
 import {createNewTicket} from '../../api/ticketAPI'
 
+
 export const openNewTicket = (formData) => (dispatch) => {
     return new Promise(async (resolve, reject) => {
         try {
