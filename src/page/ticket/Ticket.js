@@ -9,7 +9,7 @@ import { useParams} from 'react-router-dom'
 import {closeTicket, fetchSingleTicket} from '../ticket-listing/ticketsAction'
 // const ticket = tickets[0]
 export const Ticket = () => {
-    const { isLoading, error, selectedTicket, replyMsg} = useSelector(state => state.tickets)
+    const { isLoading, selectedTicket, replyMsg, replyTicketError, error} = useSelector(state => state.tickets)
     const dispatch = useDispatch()
     const {tid} = useParams()
 
@@ -23,6 +23,7 @@ export const Ticket = () => {
             <Col>
                 {isLoading && <Spinner variant='primary' animation='border' />}
                 {error && <Alert variant='danger'>{error}</Alert>}
+                {replyTicketError && <Alert variant='danger'>{replyTicketError}</Alert>}
                 {replyMsg && <Alert variant='success'>{replyMsg}</Alert>}
             </Col>
         </Row>

@@ -48,7 +48,7 @@ export const replyOnTicket = (_id, msgObj) => async (dispatch) => {
         const result = await updateReplyTicket(_id, msgObj)
         console.log(result)
         if (result.status === 'error') {
-            return dispatch(replyTicketFail())
+            return dispatch(replyTicketFail(result.message))
         }
         dispatch(fetchSingleTicket(_id))
         dispatch(replyTicketSuccess(result.message))
