@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './add-ticket-form.css'
 import { shorText } from '../../util/validation'
 import { openNewTicket } from './addTicketAction'
+import { resetSuccessMsg } from './addTicketSlice'
 
 const initialFormData = {
     email:'',
@@ -31,7 +32,11 @@ export const AddTicketForm = () => {
     const [formData, setformData] = useState(initialFormData)
     const [formError, setFormError] = useState(initialFormError)
 
-    useEffect(() => {},[formData, formError])
+    useEffect(() => {
+        return () => {
+            successMsg && dispatch(resetSuccessMsg())
+        }
+    },[formData, formError, dispatch])
 
     const handleOnChange = e => {
         const {name, value} = e.target

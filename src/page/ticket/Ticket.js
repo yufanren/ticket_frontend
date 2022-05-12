@@ -7,6 +7,7 @@ import { UpdateTicket } from '../../components/update-ticket/UpdateTicket'
 import { useParams} from 'react-router-dom'
 
 import {closeTicket, fetchSingleTicket} from '../ticket-listing/ticketsAction'
+import { resetResponseMsg } from '../ticket-listing/ticketSlice'
 // const ticket = tickets[0]
 export const Ticket = () => {
     const { isLoading, selectedTicket, replyMsg, replyTicketError, error} = useSelector(state => state.tickets)
@@ -15,7 +16,10 @@ export const Ticket = () => {
 
     useEffect(() => {
        dispatch(fetchSingleTicket(tid)) 
-    }, [tid, dispatch])
+       return () => {
+           (replyMsg || replyTicketError) && dispatch(resetResponseMsg())
+       }
+    }, [tid, dispatch, replyMsg, replyTicketError])
 
   return (
     <Container>
