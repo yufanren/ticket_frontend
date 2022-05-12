@@ -1,10 +1,31 @@
-import React from 'react'
-import {Form, Button} from 'react-bootstrap'
+import React, {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {Form, Button, Alert} from 'react-bootstrap'
+import { replyOnTicket } from '../../page/ticket-listing/ticketsAction'
 import PropTypes from 'prop-types'
 
-export const UpdateTicket = ({msg, handleOnChange, handleOnSubmit}) => {
+export const UpdateTicket = ({_id}) => {
+
+  const {replyMsg} = useSelector(state => state.tickets)
+  const dispatch = useDispatch()
+  const { user:{name} } = useSelector(state => state.user)
+  const [msg, setMsg] = useState('')
+
+  const handleOnChange = e => {
+      setMsg(e.target.value)
+  }
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+    const msgObj = {
+      message: msg
+    }
+    dispatch(replyOnTicket(_id, msgObj))
+    setMsg('')
+  }
+
   return (
-    <Form>
+    <Form onSubmit={handleOnSubmit}>
         <Form.Label>Replay</Form.Label>
         <br></br>
         <Form.Text>Please reply your messsage here.</Form.Text>
@@ -25,7 +46,5 @@ export const UpdateTicket = ({msg, handleOnChange, handleOnSubmit}) => {
 }
 
 UpdateTicket.propTypes = {
-    handleOnChange: PropTypes.func.isRequired,
-    handleOnSubmit: PropTypes.func.isRequired,
-    msg: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
 }

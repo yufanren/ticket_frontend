@@ -10,9 +10,13 @@
     justify-content: space-between;
 }
 
+.message-history:nth-child(even) .send{
+    padding-left: 2rem;
+}
+
 .message {
     padding: 1rem;
-    width: 80%;
+    width: 70%;
     border: 1px solid #ced4da;
     border-radius: 0.5rem;
 }

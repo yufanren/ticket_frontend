@@ -25,7 +25,7 @@ export const TicketTable = () => {
                 <td>{ticket._id}</td>
                 <td><Link to={`/ticket/${ticket._id}`}>{ticket.subject}</Link></td>
                 <td>{ticket.status}</td>
-                <td>{ticket.openAt}</td>               
+                <td>{ticket.openAt && new Date(ticket.openAt).toLocaleDateString()}</td>               
             </tr>) :
             <tr>
                 <td colSpan='4' className='text-center'>No Issue Found</td>       

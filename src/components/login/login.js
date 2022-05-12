@@ -11,11 +11,11 @@ export const LoginForm = ({formSwitcher}) => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {isLoading, error} = useSelector(state => state.login)
+    const {isLoading, error, isAuth} = useSelector(state => state.login)
 
     useEffect(() => {
       (sessionStorage.getItem('accessJWT')) && navigate('/dashboard')
-    }, [navigate])
+    }, [navigate, isAuth])
 
     const [username, setUsername] = useState("user1")
     const [password, setPassword] = useState("password")
